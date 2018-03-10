@@ -13,14 +13,13 @@ module.exports = function solveSudoku(matrix) {
                 var iCol = Math.floor(c / boxAmount) * boxAmount;
 				
 				matrix.map(function(item, index){
-					arrCheck.push(matrix[iRoW + index % boxAmount][iCol + Math.floor(index / boxAmount)])
-                    arrCheck.push(matrix[r][index])
-                    arrCheck.push(matrix[index][c])
+                    arrCheck.push(matrix[r][index]);
+                    arrCheck.push(matrix[index][c]);
+					arrCheck.push(matrix[iRoW + index % boxAmount][iCol + Math.floor(index / boxAmount)]);
 				});
 				var filteredArr = exampleArr.filter(function(i){
 					return (arrCheck.indexOf(i) < 0);
 				})
-//				console.log('possible: ',possible);
                 for (var i = 0; i < filteredArr.length; i++) {
                     matrix[r][c] = filteredArr[i];
                     if (solveSudoku(matrix))
